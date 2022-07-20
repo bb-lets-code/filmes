@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class Movie {
     private String title;
-    private int year;
+    private Integer year;
     private String[] genre;
     private String[] cast;
     private String[] directors;
