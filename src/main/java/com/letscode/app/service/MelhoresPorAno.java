@@ -1,5 +1,8 @@
 package com.letscode.app.service;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -8,32 +11,32 @@ import com.letscode.app.repository.Filme;
 import com.letscode.app.repository.Repository;
 
 public class MelhoresPorAno {
-    Repository repository;
+    Set<Filme> filmes;
     
-
-    public MelhoresPorAno(Repository repository) {
-        this.repository = repository;
+    // TODO: interface para o service
+    public MelhoresPorAno(Set<Filme> filmes) {
+        this.filmes = filmes;
     }
 
     public void execute() {
         // Visualizar os filmes mais bem avaliados por ano
-        repository.getFilmes().stream()
-            .limit(50)
+        Map<LocalDate, List<Filme>> filmes = this.filmes.stream()
             .sorted()
+            .limit(50)
             .collect(
                 Collectors.groupingBy(Filme::getLancamento)
-            )
-            
-            .forEach((k, v) -> {
-                System.out.println(k + ": " + v);
-            }
-        );
+                // TODO:Ordenar por ano
+            );
 
+        // Foreach para cada ano
+        //  whiteMovieService.whiteFile("getYear.csv", filmes);
     }
 
     public static void main(String[] args) {
+
         Repository repository = new Repository();
-        MelhoresPorAno melhoresPorAno = new MelhoresPorAno(repository);
+        Set<Filme> filmes = repository.getFilmes();
+        MelhoresPorAno melhoresPorAno = new MelhoresPorAno(filmes);
         melhoresPorAno.execute();
     }
 }

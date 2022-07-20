@@ -1,12 +1,56 @@
- <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
-    <localRepository/>
-    <interactiveMode/>
-    <offline/>
-    <pluginGroups/>
-    <servers/>
-    <mirrors/>
-    <proxies/>
-    <profiles/>
-    <activeProfiles/>
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <servers>
+    <server>
+      <username>f4352981</username>
+      <password>AP8iZUBoYshKUK4QmncpBDngLXK</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>f4352981</username>
+      <password>AP8iZUBoYshKUK4QmncpBDngLXK</password>
+      <id>snapshots</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>maven-test</name>
+          <url>https://binarios.intranet.bb.com.br:443/artifactory/maven-test</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>maven-test</name>
+          <url>https://binarios.intranet.bb.com.br:443/artifactory/maven-test</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>maven-test</name>
+          <url>https://binarios.intranet.bb.com.br:443/artifactory/maven-test</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>maven-test</name>
+          <url>https://binarios.intranet.bb.com.br:443/artifactory/maven-test</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
 </settings>

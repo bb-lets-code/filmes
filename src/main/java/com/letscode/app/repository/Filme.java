@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Filme implements Comparable<Filme> {
     private LocalDate lancamento;
+    
 
     public Filme(LocalDate lancamento) {
         this.lancamento = lancamento;
@@ -15,7 +16,7 @@ public class Filme implements Comparable<Filme> {
 
     @Override
     public int compareTo(Filme filme) {
-        return this.lancamento.compareTo(filme.lancamento);
+        return this.lancamento.compareTo(filme.getLancamento());
     }
 
     public String getTitulo() {
