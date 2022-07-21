@@ -1,17 +1,25 @@
 package com.letscode.app.service;
 
-import java.util.List;
+import java.util.Set;
 
 import com.letscode.app.model.Movie;
 
+import repository.MovieRepository;
+
 public class WhiteMovieService {
 
-    public void writeFile(Integer fileName, List<Movie> filmes) {
-        // TODO: implementar o método writeFile
-        System.out.println("Ano: " + fileName);
-        for (Movie movie : filmes) {
-            System.out.println(movie.getTitle() + " - " + movie.getRating());
-        }
+    private MovieRepository repository;
+
+    public void writeFile(Integer fileName, Set<Movie> filmes) {
+        
+        
+
+        this.repository = new MovieRepository();
+        // TODO: verificar como criar o arquivo com um novo nome
+        repository.write( filmes);
+        
+
+
     }
 
 }
