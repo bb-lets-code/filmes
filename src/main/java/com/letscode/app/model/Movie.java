@@ -132,10 +132,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [actors=" + Arrays.toString(actors) + ", cast=" + Arrays.toString(cast) + ", description="
-                + description + ", directors=" + Arrays.toString(directors) + ", genre=" + Arrays.toString(genre)
-                + ", metascore=" + metascore + ", rating=" + rating + ", revenue=" + revenue + ", runtime=" + runtime
-                + ", title=" + title + ", year=" + year + "]";
+        return "Movie [actors=" + Arrays.toString(actors) + ", title=" + title + ", year=" + year + "]";
     }
 
     @Override
@@ -159,15 +156,23 @@ public class Movie {
         if (getClass() != obj.getClass())
             return false;
         Movie other = (Movie) obj;
-        if (rank == null) {
-            if (other.rank != null)
-                return false;
-        } else if (!rank.equals(other.rank))
-            return false;
+        
         if (title == null) {
             if (other.title != null)
                 return false;
         } else if (!title.equals(other.title))
+            return false;
+
+        if (year == null) {
+            if (other.year != null)
+                return false;
+        } else if (!year.equals(other.year))
+            return false;
+
+        if (directors == null) {
+            if (other.directors != null)
+                return false;
+        } else if (!directors.equals(other.directors))
             return false;
         return true;
     }

@@ -12,7 +12,10 @@ import com.letscode.app.model.Movie;
 import com.letscode.app.model.Rating;
 
 public class MovieRepository implements BaseModel<Set<Movie>> {
+    
 
+    public MovieRepository() {
+    }
 
     @Override
     public Set<Movie> read() throws IOException {
@@ -42,6 +45,7 @@ public class MovieRepository implements BaseModel<Set<Movie>> {
                     
                     // Builder para montar o objeto Filme
                     return new Movie(
+                        linha[TableCSV.Rank.ordinal()],
                         linha[TableCSV.Title.ordinal()],
                         Integer.valueOf(linha[TableCSV.Year.ordinal()]), 
                         genre, 
@@ -65,6 +69,8 @@ public class MovieRepository implements BaseModel<Set<Movie>> {
 
     @Override
     public void write(Set<Movie> stringSet) {
+        stringSet.stream().forEach(System.out::println);
+        System.out.println("\n\n");
         return ;
     }
 }
