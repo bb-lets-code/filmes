@@ -1,9 +1,7 @@
 package com.letscode.app.model;
 
-import com.letscode.app.model.Rating;
-
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Movie {
     private String title;
@@ -118,5 +116,13 @@ public class Movie {
 
     public void setMetascore(double metascore) {
         this.metascore = metascore;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie [actors=" + Arrays.toString(actors) + ", cast=" + Arrays.toString(cast) + ", description="
+                + description + ", directors=" + Arrays.toString(directors) + ", genre=" + Arrays.toString(genre)
+                + ", metascore=" + metascore + ", rating=" + rating + ", revenue=" + revenue + ", runtime=" + runtime
+                + ", title=" + title + ", year=" + year + "]";
     }
 }

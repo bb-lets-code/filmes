@@ -1,14 +1,13 @@
 package com.letscode.app.service;
 
-import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.letscode.app.model.Movie;
-
-import repository.MovieRepository;
 public class BestesByYear {
     Set<Movie> movies;
     private WhiteMovieService whiteMovieService;
@@ -17,8 +16,9 @@ public class BestesByYear {
     public BestesByYear(Set<Movie> movies) {
         this.movies = movies;
     }
-
+    
     public void execute() {
+        this.whiteMovieService = new WhiteMovieService();
         // Visualizar os filmes mais bem avaliados por ano
         Map<Integer, List<Movie>> filmes = this.movies.stream()
             .sorted( (f1, f2) -> f1.getRating().compareTo(f2.getRating()) )
@@ -26,17 +26,13 @@ public class BestesByYear {
             .collect(Collectors.groupingBy(f ->f.getYear()));
 
         // Foreach para cada ano
-        this.whiteMovieService = new WhiteMovieService();
+        
         filmes.forEach((year, movies) -> {
-            whiteMovieService.writeFile(year, movies); // Write file for each year
+            TreeSet<Movie> filmesByYear = new TreeSet<Movie>(Comparator.comparing(Movie::getRating).reversed());
+            filmesByYear.addAll(movies);
+            whiteMovieService.writeFile(year, filmesByYear); 
+            
         });
     }
 
-    public static void main(String[] args) throws IOException {
-
-        MovieRepository repository = new MovieRepository();
-        Set<Movie> movies = repository.read();
-        BestesByYear melhoresPorAno = new BestesByYear(movies);
-        melhoresPorAno.execute();
-    }
 }
