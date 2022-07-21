@@ -1,5 +1,6 @@
 package com.letscode.app.service;
 
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 import com.letscode.app.model.Movie;
 public class BestesByYearService {
     Set<Movie> movies;
-    private WhiteMovieService whiteMovieService;
+    private WriteMovieService writeMovieService;
     
     // TODO: interface para o service
     public BestesByYearService(Set<Movie> movies) {
@@ -18,7 +19,7 @@ public class BestesByYearService {
     }
     
     public void execute() {
-        this.whiteMovieService = new WhiteMovieService();
+        this.writeMovieService = new WriteMovieService();
         // Visualizar os filmes mais bem avaliados por ano
         Map<Integer, List<Movie>> filmes = this.movies.stream()
             .sorted( (f1, f2) -> f1.getRating().compareTo(f2.getRating()) )
@@ -28,11 +29,13 @@ public class BestesByYearService {
         // Foreach para cada ano
         
         filmes.forEach((year, movies) -> {
-            TreeSet<Movie> filmesByYear = new TreeSet<Movie>(Comparator.comparing(Movie::getRating).reversed());
+            Set<Movie> filmesByYear = new TreeSet<>(Comparator.comparing(Movie::getRating).reversed());
             filmesByYear.addAll(movies);
-            whiteMovieService.writeFile(year, filmesByYear); 
-            
+            try {
+                writeMovieService.writeFile(year, filmesByYear);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
-
 }

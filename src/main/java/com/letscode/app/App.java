@@ -1,18 +1,21 @@
 package com.letscode.app;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Arrays;
 
-import repository.MovieRepository;
+import com.letscode.app.repository.MovieReadRepository;
+import com.letscode.app.service.BestesByYearService;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
+
+public class App {
     public static void main( String[] args ) throws IOException
     {
-        MovieRepository repository = new MovieRepository();
-        var test = repository.read();
+        MovieReadRepository repository = new MovieReadRepository();
+        var test = repository.read(Path.of("movies2.csv"));
+        //test.forEach(m -> System.out.println("'" + m.getTitle() + "' (" + m.getYear() + ") de " + Arrays.toString(m.getDirectors()) +""));
+
+        BestesByYearService bestesByYearService = new BestesByYearService(test);
+        bestesByYearService.execute();
     }
 }
