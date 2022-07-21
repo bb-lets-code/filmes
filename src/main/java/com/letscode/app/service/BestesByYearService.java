@@ -23,7 +23,7 @@ public class BestesByYearService {
         Map<Integer, List<Movie>> filmes = this.movies.stream()
             .sorted( (f1, f2) -> f1.getRating().compareTo(f2.getRating()) )
             .limit(50)
-            .collect(Collectors.groupingBy(f ->f.getYear()));
+            .collect(Collectors.groupingBy(Movie::getYear));
 
         // Foreach para cada ano
         
