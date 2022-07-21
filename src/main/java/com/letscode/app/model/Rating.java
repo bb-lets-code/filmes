@@ -1,6 +1,6 @@
 package com.letscode.app.model;
 
-public class Rating {
+public class Rating implements Comparable<Rating> {
     private Double rating;
     private int votes;
 
@@ -23,5 +23,15 @@ public class Rating {
 
     public void setVotes(int votes) {
         this.votes = votes;
+    }
+
+    @Override
+    public int compareTo(Rating o) {
+        return this.rating.compareTo(o.getRating());
+        
+    }
+    @Override
+    public String toString() {
+        return "Rating [rating=" + rating + ", votes=" + votes + "]";
     }
 }
