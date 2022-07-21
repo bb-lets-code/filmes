@@ -1,48 +1,42 @@
 package com.letscode.app.service;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import com.letscode.app.model.Movie;
-import com.letscode.app.model.Rating;
 
 import repository.MovieRepository;
-public class MelhoresPorAno {
-    Set<Movie> filmes;
+public class BestesByYear {
+    Set<Movie> movies;
     private WhiteMovieService whiteMovieService;
     
     // TODO: interface para o service
-    public MelhoresPorAno(Set<Movie> filmes) {
-        this.filmes = filmes;
+    public BestesByYear(Set<Movie> movies) {
+        this.movies = movies;
     }
 
     public void execute() {
         // Visualizar os filmes mais bem avaliados por ano
-        Map<Integer, List<Movie>> filmes = this.filmes.stream()
+        Map<Integer, List<Movie>> filmes = this.movies.stream()
             .sorted( (f1, f2) -> f1.getRating().compareTo(f2.getRating()) )
             .limit(50)
-            .collect(
-                Collectors.groupingBy(Movie::getYear)
-            );
+            .collect(Collectors.groupingBy(f ->f.getYear()));
 
         // Foreach para cada ano
+        this.whiteMovieService = new WhiteMovieService();
         filmes.forEach((year, movies) -> {
-            System.out.println(year);
-            whiteMovieService.writeFile(year, movies);
-            
+            whiteMovieService.writeFile(year, movies); // Write file for each year
         });
     }
 
     public static void main(String[] args) throws IOException {
 
         MovieRepository repository = new MovieRepository();
-        Set<Movie> filmes = repository.read();
-        MelhoresPorAno melhoresPorAno = new MelhoresPorAno(filmes);
+        Set<Movie> movies = repository.read();
+        BestesByYear melhoresPorAno = new BestesByYear(movies);
         melhoresPorAno.execute();
     }
 }

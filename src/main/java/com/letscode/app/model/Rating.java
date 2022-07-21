@@ -30,4 +30,9 @@ public class Rating implements Comparable<Rating> {
         return this.rating.compareTo(o.getRating());
         
     }
+
+    @Override
+    public String toString() {
+        return "Rating [rating=" + rating + ", votes=" + votes + "]";
+    }
 }

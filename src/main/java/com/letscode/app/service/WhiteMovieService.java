@@ -1,10 +1,8 @@
 package com.letscode.app.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.letscode.app.model.Movie;
-import com.letscode.app.model.Rating;
 
 public class WhiteMovieService {
 
