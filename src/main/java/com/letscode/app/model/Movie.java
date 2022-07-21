@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class Movie {
+
+    private String rank;
+    
     private String title;
     private Integer year;
     private String[] genre;
@@ -16,7 +19,9 @@ public class Movie {
     private BigDecimal revenue;
     private double metascore;
 
-    public Movie(String title, int year, String[] genre, String[] cast, String[] directors, String description, String[] actors, int runtime, Rating rating, BigDecimal revenue, double metascore) {
+    public Movie(String rank, String title, Integer year, String[] genre, String[] cast, String[] directors,
+            String description, String[] actors, int runtime, Rating rating, BigDecimal revenue, double metascore) {
+        this.rank = rank;
         this.title = title;
         this.year = year;
         this.genre = genre;
@@ -30,6 +35,13 @@ public class Movie {
         this.metascore = metascore;
     }
 
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
     public String getTitle() {
         return title;
     }
@@ -125,4 +137,40 @@ public class Movie {
                 + ", metascore=" + metascore + ", rating=" + rating + ", revenue=" + revenue + ", runtime=" + runtime
                 + ", title=" + title + ", year=" + year + "]";
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        
+        result = prime * result + ((title == null) ? 0 : title.hashCode());
+        result = prime * result + ((year == null) ? 0 : year.hashCode());
+        result = prime * result + (( directors == null) ? 0 : directors.hashCode());
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Movie other = (Movie) obj;
+        if (rank == null) {
+            if (other.rank != null)
+                return false;
+        } else if (!rank.equals(other.rank))
+            return false;
+        if (title == null) {
+            if (other.title != null)
+                return false;
+        } else if (!title.equals(other.title))
+            return false;
+        return true;
+    }
+
+
 }

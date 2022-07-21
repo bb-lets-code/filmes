@@ -27,7 +27,20 @@ public class Rating implements Comparable<Rating> {
 
     @Override
     public int compareTo(Rating o) {
-        return this.rating.compareTo(o.getRating());
+        if(this.rating > o.getRating()) {
+            return 1;
+        } else if(this.rating < o.getRating()) {
+            return -1;
+        } else {
+            if(this.votes > o.getVotes()) {
+                return 1;
+            } else if(this.votes < o.getVotes()) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+        
         
     }
 
