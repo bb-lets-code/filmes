@@ -6,7 +6,7 @@ import com.letscode.app.model.Movie;
 
 import repository.MovieRepository;
 
-public class WhiteMovieService {
+public class WriteMovieService {
 
     private MovieRepository repository;
 
