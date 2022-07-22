@@ -120,9 +120,9 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "\nMovie [actors=" + Arrays.toString(actors) + ", cast=" + Arrays.toString(cast) + ", description="
-                + description + ", directors=" + Arrays.toString(directors) + ", genre=" + Arrays.toString(genre)
-                + ", metascore=" + metascore + ", rating=" + rating + ", revenue=" + revenue + ", runtime=" + runtime
-                + ", title=" + title + ", year=" + year + "]";
+        return "" + this.title + ",\"" + Arrays.toString(this.genre) + "\",\"" + this.description + "\",\"" +
+                Arrays.toString(this.directors) + "\",\"" + Arrays.toString(actors) + "\"," + this.year + "," +
+                this.runtime + "," + this.rating.getRating() + "," + this.rating.getVotes() + "," + this.revenue +
+                "," + this.metascore;
     }
 }
