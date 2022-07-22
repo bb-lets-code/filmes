@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Arrays;
 
+import com.letscode.app.model.Movie;
 import com.letscode.app.repository.MovieReadRepository;
 import com.letscode.app.service.BestesByYearService;
 import com.letscode.app.validation.ValidationPath;
@@ -13,10 +14,15 @@ public class App {
     public static void main(String[] args) throws IOException
     {
         MovieReadRepository repository = new MovieReadRepository();
-        var test = repository.read(Path.of("movies2.csv"));
-        //test.forEach(m -> System.out.println("'" + m.getTitle() + "' (" + m.getYear() + ") de " + Arrays.toString(m.getDirectors()) +""));
+        var test = repository.read();
+        int i=0;
+        for(Movie movie : test){
+            i++;
+            System.out.println(i + ". '" + movie.getTitle() + "' (" + movie.getYear() + ") de " + Arrays.toString(movie.getDirectors()) +"");
+        }
+//        test.forEach(m -> System.out.println("'" + m.getTitle() + "' (" + m.getYear() + ") de " + Arrays.toString(m.getDirectors()) +""));
 
-        BestesByYearService bestesByYearService = new BestesByYearService(test);
-        bestesByYearService.execute();
+//        BestesByYearService bestesByYearService = new BestesByYearService(test);
+//        bestesByYearService.execute();
     }
 }
