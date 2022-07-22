@@ -1,8 +1,8 @@
 package com.letscode.app.repository;
 
 import java.io.IOException;
-import java.nio.file.Path;
 
-public interface BaseReadModel<T> {
+public interface BaseRepository<T, U> {
     T read() throws IOException;
+    void write(T t, U u) throws IOException;
 }

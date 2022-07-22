@@ -5,12 +5,9 @@ import com.letscode.app.model.Movie;
 import com.letscode.app.model.Rating;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
 import java.util.function.Function;
 
-public class TreatmentService {
+public class ReadMovieService {
     static public Function<String, Movie> getTreatmentMovie = m -> {
         String[] linha = m.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
@@ -43,14 +40,4 @@ public class TreatmentService {
                         Integer.parseInt(linha[TableCSV.Votes.ordinal()])),
                         new BigDecimal(TableCSV.Revenue.ordinal()), (double) TableCSV.Metascore.ordinal()
         );};
-
-    static public List<String> parseWrite (Set<Movie> movies) {
-        List<String> usersAsString = Collections.singletonList(movies.toString());
-        usersAsString = usersAsString.stream()
-                .map(s -> s.replace("[", ""))
-                .map(s -> s.replace("]", ""))
-                .map(s -> s.replace("\n, ", "\n"))
-                .toList();
-        return usersAsString;
-    }
 }

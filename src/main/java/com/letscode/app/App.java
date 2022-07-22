@@ -2,23 +2,20 @@ package com.letscode.app;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import com.letscode.app.model.Movie;
-import com.letscode.app.service.BestsMoviesByYearService;
 
-import com.letscode.app.model.Movie;
-import com.letscode.app.repository.MovieReadRepository;
+import com.letscode.app.repository.MovieRepository;
 import com.letscode.app.service.BestesByYearService;
-import com.letscode.app.validation.ValidationPath;
 
 
 public class App {
+
+    //TODO: JUNTAR BASE MODEL REPOSITORY; PASSAR A FUNÇÃO PARSEWRITE PARA A CLASSE WRITEMOVIESERVICE; MUDAR NOME TREATMENT SERVICE
+    // SEPARAR ARQUIVOS ESCRITOS EM NOVA PASTA; REVISAR FUNÇÃO WRITE
     public static void main(String[] args) throws IOException
     {
-        MovieReadRepository repository = new MovieReadRepository();
+        MovieRepository repository = new MovieRepository();
         var test = repository.read();
         int i=0;
         for(Movie movie : test){
