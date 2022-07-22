@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class Movie {
+
+    private String rank;
     private String title;
     private Integer year;
     private String[] genre;
@@ -30,6 +32,13 @@ public class Movie {
         this.metascore = metascore;
     }
 
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
     public String getTitle() {
         return title;
     }
@@ -124,5 +133,44 @@ public class Movie {
                 Arrays.toString(this.directors) + "\",\"" + Arrays.toString(actors) + "\"," + this.year + "," +
                 this.runtime + "," + this.rating.getRating() + "," + this.rating.getVotes() + "," + this.revenue +
                 "," + this.metascore + "\n";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        
+        result = prime * result + ((title == null) ? 0 : title.hashCode());
+        result = prime * result + ((year == null) ? 0 : year.hashCode());
+        result = prime * result + (( directors == null) ? 0 : Arrays.hashCode(directors));
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Movie other = (Movie) obj;
+        
+        if (title == null) {
+            if (other.title != null)
+                return false;
+        } else if (!title.equals(other.title))
+            return false;
+
+        if (year == null) {
+            if (other.year != null)
+                return false;
+        } else if (!year.equals(other.year))
+            return false;
+
+        if (directors == null) {
+            return other.directors == null;
+        } else return Arrays.equals(directors, other.directors);
     }
 }

@@ -22,7 +22,7 @@ public class BestesByYearService {
         this.writeMovieService = new WriteMovieService();
         // Visualizar os filmes mais bem avaliados por ano
         Map<Integer, List<Movie>> filmes = this.movies.stream()
-            .sorted( (f1, f2) -> f1.getRating().compareTo(f2.getRating()) )
+            .sorted((f1, f2) -> f1.getRating().compareTo(f2.getRating()) )
             .limit(50)
             .collect(Collectors.groupingBy(Movie::getYear));
 
