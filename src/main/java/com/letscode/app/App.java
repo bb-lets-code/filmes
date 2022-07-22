@@ -9,7 +9,7 @@ import com.letscode.app.service.BestesByYearService;
 
 
 public class App {
-    public static void main( String[] args ) throws IOException
+    public static void main(String[] args) throws IOException
     {
         MovieReadRepository repository = new MovieReadRepository();
         var test = repository.read(Path.of("movies2.csv"));
