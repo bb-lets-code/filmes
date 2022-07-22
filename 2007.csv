@@ -1,3 +1,3 @@
-[
-Movie [actors=[Lauren Birkell, Paul Borghese, Chira Cassel, Anthony Cirillo], cast=[Lauren Birkell, Paul Borghese, Chira Cassel, Anthony Cirillo], description=A teenager turns her babysitting service into a call-girl service for married guys after fooling around with one of her customers., directors=[David Ross], genre=[Drama], metascore=0.0, rating=Rating [rating=5.7, votes=8914], revenue=null, runtime=0, title=The Babysitters, year=2007], 
-Movie [actors=[Nicolas Cage, Eva Mendes, Sam Elliott, Matt Long], cast=[Nicolas Cage, Eva Mendes, Sam Elliott, Matt Long], description=Stunt motorcyclist Johnny Blaze gives up his soul to become a hellblazing vigilante, directors=[Mark Steven Johnson], genre=[Action, Fantasy, Thriller], metascore=0.0, rating=Rating [rating=5.2, votes=190673], revenue=null, runtime=0, title=Ghost Rider, year=2007]]
+The Babysitters,"Drama","A teenager turns her babysitting service into a call-girl service for married guys after fooling around with one of her customers.","David Ross","Lauren Birkell, Paul Borghese, Chira Cassel, Anthony Cirillo",2007,0,5.7,8914,null,0.0
+Ghost Rider,"Action, Fantasy, Thriller","Stunt motorcyclist Johnny Blaze gives up his soul to become a hellblazing vigilante","Mark Steven Johnson","Nicolas Cage, Eva Mendes, Sam Elliott, Matt Long",2007,0,5.2,190673,null,0.0
+

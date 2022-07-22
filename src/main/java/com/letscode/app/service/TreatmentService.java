@@ -4,9 +4,12 @@ import com.letscode.app.enums.TableCSV;
 import com.letscode.app.model.Movie;
 import com.letscode.app.model.Rating;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 
-public class RegexTreatment {
+public class TreatmentService {
     static public Function<String, Movie> getTreatmentMovie = m -> {
         String[] linha = m.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
@@ -39,4 +42,14 @@ public class RegexTreatment {
                         Integer.parseInt(linha[TableCSV.Votes.ordinal()]))
                 , null, 0
         );};
+
+    static public List<String> parseWrite (Set<Movie> movies) {
+        List<String> usersAsString = Collections.singletonList(movies.toString());
+        usersAsString = usersAsString.stream()
+                .map(s -> s.replace("[", ""))
+                .map(s -> s.replace("]", ""))
+                .map(s -> s.replace("\n, ", "\n"))
+                .toList();
+        return usersAsString;
+    }
 }
