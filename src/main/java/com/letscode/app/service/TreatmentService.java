@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class TreatmentService {
     static public Function<String, Movie> getTreatmentMovie = m -> {
@@ -46,11 +47,13 @@ public class TreatmentService {
 
     static public List<String> parseWrite (Set<Movie> movies) {
         List<String> usersAsString = Collections.singletonList(movies.toString());
-        usersAsString = usersAsString.stream()
+        
+        usersAsString.stream()
                 .map(s -> s.replace("[", ""))
                 .map(s -> s.replace("]", ""))
                 .map(s -> s.replace("\n, ", "\n"))
-                .toList();
+                .collect(Collectors.toList());
+                 
         return usersAsString;
     }
 }
