@@ -22,7 +22,7 @@ public class App {
         }
 //        test.forEach(m -> System.out.println("'" + m.getTitle() + "' (" + m.getYear() + ") de " + Arrays.toString(m.getDirectors()) +""));
 
-//        BestesByYearService bestesByYearService = new BestesByYearService(test);
-//        bestesByYearService.execute();
+        BestesByYearService bestesByYearService = new BestesByYearService(test);
+        bestesByYearService.execute();
     }
 }

@@ -12,7 +12,6 @@ public class WriteMovieService {
     public void writeFile(Integer fileName, Set<Movie> filmes) throws IOException {
         MovieWriteRepository repository = new MovieWriteRepository();
         String file = fileName + ".csv";
-        // TODO: verificar como criar o arquivo com um novo nome
         repository.write(filmes, Path.of(file));
     }
 }

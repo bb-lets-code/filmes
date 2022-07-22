@@ -80,21 +80,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\movies1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\movies2.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\movies3.csv">
+        <entry key="\movies_files\movies1.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -102,6 +88,13 @@
           </value>
         </entry>
         <entry key="\movies_files\movies2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\movies_files\movies3.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
