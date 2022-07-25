@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class WriteMovieService {
-    public void writeFile(Integer fileName, Set<Movie> filmes) throws IOException {
+    public void writeFile(String fileName, Set<Movie> filmes) throws IOException {
         MovieRepository repository = new MovieRepository();
         String file = "output_csv\\" + fileName + ".csv";
         repository.write(filmes, Path.of(file));
