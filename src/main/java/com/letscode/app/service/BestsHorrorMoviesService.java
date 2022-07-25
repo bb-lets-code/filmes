@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class BestsHorrorMoviesService {
@@ -21,23 +23,26 @@ public class BestsHorrorMoviesService {
 
     public void execute() {
         this.writeMovieService = new WriteMovieService();
-        Set<Movie> moviesHorrorGenre = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
+        TreeSet<Movie> moviesHorrorGenre = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
+        TreeSet<Movie> twentyMovies = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
+        final Pattern pattern = Pattern.compile("(?=.*(Horror))");
 
-        movies.forEach(movie -> {
-            Arrays.stream(movie.getGenre()).forEach(genre -> {
-                if (genre.equals("Horror")) {
+        try {
+            movies.forEach(movie -> {
+                Matcher matcher = pattern.matcher(Arrays.toString(movie.getGenre()));
+
+                if (matcher.find()) {
                     moviesHorrorGenre.add(movie);
                 }
             });
-        });
 
-        moviesHorrorGenre.stream()
-                .sorted(Comparator.comparing(Movie::getRating).reversed())
-                .limit(20)
-                .collect(Collectors.toList());
+            twentyMovies.addAll(moviesHorrorGenre.stream()
+                    .sorted(Comparator.comparing(Movie::getRating).reversed())
+                    .limit(20)
+                    .collect(Collectors.toList())
+            );
 
-        try {
-            writeMovieService.writeFile("HorrorMovies", moviesHorrorGenre);
+            writeMovieService.writeFile("HorrorMovies", twentyMovies);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
