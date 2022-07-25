@@ -40,8 +40,6 @@ public class Rating implements Comparable<Rating> {
                 return 0;
             }
         }
-        
-        
     }
 
     @Override

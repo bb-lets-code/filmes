@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class Movie {
 
     private String rank;
-    
     private String title;
     private Integer year;
     private String[] genre;
@@ -19,9 +18,7 @@ public class Movie {
     private BigDecimal revenue;
     private double metascore;
 
-    public Movie(String rank, String title, Integer year, String[] genre, String[] cast, String[] directors,
-            String description, String[] actors, int runtime, Rating rating, BigDecimal revenue, double metascore) {
-        this.rank = rank;
+    public Movie(String title, Integer year, String[] genre, String[] cast, String[] directors, String description, String[] actors, int runtime, Rating rating, BigDecimal revenue, double metascore) {
         this.title = title;
         this.year = year;
         this.genre = genre;
@@ -132,7 +129,10 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie [actors=" + Arrays.toString(actors) + ", title=" + title + ", year=" + year + "]";
+        return this.title + ",\"" + Arrays.toString(this.genre) + "\",\"" + this.description + "\",\"" +
+                Arrays.toString(this.directors) + "\",\"" + Arrays.toString(actors) + "\"," + this.year + "," +
+                this.runtime + "," + this.rating.getRating() + "," + this.rating.getVotes() + "," + this.revenue +
+                "," + this.metascore + "\n";
     }
 
     @Override
@@ -142,7 +142,7 @@ public class Movie {
         
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         result = prime * result + ((year == null) ? 0 : year.hashCode());
-        result = prime * result + (( directors == null) ? 0 : directors.hashCode());
+        result = prime * result + (( directors == null) ? 0 : Arrays.hashCode(directors));
 
         return result;
     }
@@ -170,12 +170,7 @@ public class Movie {
             return false;
 
         if (directors == null) {
-            if (other.directors != null)
-                return false;
-        } else if (!directors.equals(other.directors))
-            return false;
-        return true;
+            return other.directors == null;
+        } else return Arrays.equals(directors, other.directors);
     }
-
-
 }

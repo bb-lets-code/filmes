@@ -1,35 +1,27 @@
 package com.letscode.app;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-import com.letscode.app.model.Movie;
+import com.letscode.app.repository.MovieRepository;
 import com.letscode.app.service.BestsMoviesByYearService;
 
-import repository.MovieRepository;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args ) throws IOException
+public class App {
+
+    //TODO: JUNTAR BASE MODEL REPOSITORY; PASSAR A FUNÇÃO PARSEWRITE PARA A CLASSE WRITEMOVIESERVICE; MUDAR NOME TREATMENT SERVICE
+    // SEPARAR ARQUIVOS ESCRITOS EM NOVA PASTA; REVISAR FUNÇÃO WRITE
+    public static void main(String[] args) throws IOException
     {
         MovieRepository repository = new MovieRepository();
-        Set<Movie> test = repository.read();
-        // test2.forEach(f -> test.add(f));
-        // test3.forEach(f -> test.add(f));
-        BestsMoviesByYearService service = new BestsMoviesByYearService(test);
-        // for (Movie movie : test) {
-        //     System.out.println(movie.getTitle() + " " + movie.getRating());
-        // }
-        Map<Integer, List<Movie>> execute = service.execute();
-        
+        var test = repository.read();
+        int i=0;
+//        for(Movie movie : test){
+//            i++;
+//            System.out.println(i + ". '" + movie.getTitle() + "' (" + movie.getYear() + ") de " + Arrays.toString(movie.getDirectors()) +"");
+//        }
+//        test.forEach(m -> System.out.println("'" + m.getTitle() + "' (" + m.getYear() + ") de " + Arrays.toString(m.getDirectors()) +""));
 
-        
-
+        BestsMoviesByYearService bestsMoviesByYearService = new BestsMoviesByYearService(test);
+        bestsMoviesByYearService.execute();
     }
 }
