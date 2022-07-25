@@ -24,26 +24,32 @@ public class BestsMoviesByYearService {
         // Visualizar os filmes mais bem avaliados por ano
         Map<Integer, List<Movie>> moviesGroupsByYear = movies.stream().collect(Collectors.groupingBy(Movie::getYear));
 
-        moviesGroupsByYear.forEach((year, moviesByYear) -> {
+        moviesGroupsByYear
+        .forEach((year,moviesByYear) -> {
                 // Ordenar os filmes por rating
-                final Set<Movie> filmesByYear = new TreeSet<Movie>(Comparator.comparing(Movie::getRating).reversed());
+                final TreeSet<Movie> filmesByYear = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
 
                 filmesByYear.addAll(
                     moviesByYear.stream()
                     .sorted(Comparator.comparing(Movie::getRating).reversed())
                     .limit(50)
-                    .collect(Collectors.toSet())
+                    .collect(Collectors.toList())
                 );
+
             try {
                 whiteMovieService.writeFile(year, filmesByYear);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
         });
 
-        return moviesGroupsByYear.entrySet().stream().collect(
-            Collectors.toMap(Entry::getKey, e -> e.getValue().stream().sorted(Comparator.comparing(Movie::getRating).reversed()).limit(50).collect(Collectors.toList()))
+        Map<Integer, List<Movie>> moviesSorted = moviesGroupsByYear.entrySet().stream().collect(
+            Collectors.toMap(Entry::getKey, e-> e.getValue().stream().sorted(Comparator.comparing(Movie::getRating).reversed()).limit(50).collect(Collectors.toList()))
         );
+        
+        return moviesSorted;
+        
     }
 
 }
