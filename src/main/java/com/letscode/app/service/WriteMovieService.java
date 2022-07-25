@@ -18,7 +18,7 @@ public class WriteMovieService {
     }
 
     static public List<String> parseWrite (Set<Movie> movies) {
-        List<String> list = Collections.singletonList(movies.stream().collect(Collectors.toList()).toString());
+        // List<String> list = Collections.singletonList(movies.stream().collect(Collectors.toList()).toString());
         return movies.stream()
                 .map(Movie::toString)
                 .map(s -> s.replace("[", ""))
