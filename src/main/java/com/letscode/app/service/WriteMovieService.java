@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class WriteMovieService {
     public void writeFile(Integer fileName, Set<Movie> filmes) throws IOException {
         MovieRepository repository = new MovieRepository();
-        String file = fileName + ".csv";
+        String file = "output_csv\\" + fileName + ".csv";
         repository.write(filmes, Path.of(file));
     }
 

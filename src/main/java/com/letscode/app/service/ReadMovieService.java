@@ -1,12 +1,11 @@
 package com.letscode.app.service;
 
+import java.math.BigDecimal;
+import java.util.function.Function;
+
 import com.letscode.app.enums.TableCSV;
 import com.letscode.app.model.Movie;
 import com.letscode.app.model.Rating;
-
-import java.math.BigDecimal;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class ReadMovieService {
     static public Function<String, Movie> getTreatmentMovie = m -> {

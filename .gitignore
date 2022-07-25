@@ -1,4 +1,5 @@
 target/
+/output_csv
 /.idea
 /.vscode
 pom.xml.tag
