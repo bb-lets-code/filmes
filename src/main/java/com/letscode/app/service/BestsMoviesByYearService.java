@@ -23,20 +23,16 @@ public class BestsMoviesByYearService {
         this.whiteMovieService = new WriteMovieService();
         // Visualizar os filmes mais bem avaliados por ano
         Map<Integer, List<Movie>> moviesGroupsByYear = movies.stream().collect(Collectors.groupingBy(Movie::getYear));
-        // moviesGroupsByYear.entrySet().stream().map(a -> a.getValue().stream().sorted(Comparator.comparing(Movie::getRating).reversed()).collect(Collectors.toList())).forEach(Collectors.toMap(null, null));
-
-
 
         moviesGroupsByYear
         .forEach((year,moviesByYear) -> {
-            
                 // Ordenar os filmes por rating
-                
                 final TreeSet<Movie> filmesByYear = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
 
                 filmesByYear.addAll(
                     moviesByYear.stream()
                     .sorted(Comparator.comparing(Movie::getRating).reversed())
+                    .limit(50)
                     .collect(Collectors.toList())
                 );
 
@@ -45,11 +41,9 @@ public class BestsMoviesByYearService {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("+----------------------------------------------------+");
-                
 
-        })
-        ;
+        });
+
         Map<Integer, List<Movie>> moviesSorted = moviesGroupsByYear.entrySet().stream().collect(
             Collectors.toMap(Entry::getKey, e-> e.getValue().stream().sorted(Comparator.comparing(Movie::getRating).reversed()).limit(50).collect(Collectors.toList()))
         );
