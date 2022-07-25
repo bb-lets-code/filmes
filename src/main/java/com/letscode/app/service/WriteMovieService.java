@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public class WriteMovieService {
     public void writeFile(Integer fileName, Set<Movie> filmes) throws IOException {
         MovieRepository repository = new MovieRepository();
-        repository.write(filmes, Path.of("movies_files/FilterByYear/"+ fileName + ".csv"));
+        String file = "output_csv\\" + fileName + ".csv";
+        repository.write(filmes, Path.of(file));
     }
 
     static public List<String> parseWrite (Set<Movie> movies) {

@@ -14,12 +14,6 @@ public class App {
     {
         MovieRepository repository = new MovieRepository();
         var test = repository.read();
-        int i=0;
-//        for(Movie movie : test){
-//            i++;
-//            System.out.println(i + ". '" + movie.getTitle() + "' (" + movie.getYear() + ") de " + Arrays.toString(movie.getDirectors()) +"");
-//        }
-//        test.forEach(m -> System.out.println("'" + m.getTitle() + "' (" + m.getYear() + ") de " + Arrays.toString(m.getDirectors()) +""));
 
         BestsMoviesByYearService bestsMoviesByYearService = new BestsMoviesByYearService(test);
         bestsMoviesByYearService.execute();
