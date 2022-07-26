@@ -21,3 +21,4 @@ buildNumber.properties
 .vscode/settings.json
 .vscode/launch.json
 saida.txt
+/movies_files/FilterByYear

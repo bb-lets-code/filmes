@@ -3,6 +3,7 @@ package com.letscode.app;
 import java.io.IOException;
 
 import com.letscode.app.repository.MovieRepository;
+import com.letscode.app.service.BestsHorrorMoviesService;
 import com.letscode.app.service.BestsMoviesByYearService;
 
 
@@ -17,5 +18,8 @@ public class App {
 
         BestsMoviesByYearService bestsMoviesByYearService = new BestsMoviesByYearService(test);
         bestsMoviesByYearService.execute();
+
+        BestsHorrorMoviesService bestsHorrorMoviesService = new BestsHorrorMoviesService(test);
+        bestsHorrorMoviesService.execute();
     }
 }

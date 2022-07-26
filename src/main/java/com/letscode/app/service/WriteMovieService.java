@@ -2,7 +2,6 @@ package com.letscode.app.service;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -11,7 +10,7 @@ import com.letscode.app.model.Movie;
 import com.letscode.app.repository.MovieRepository;
 
 public class WriteMovieService {
-    public void writeFile(Integer fileName, Set<Movie> filmes) throws IOException {
+    public void writeFile(String fileName, Set<Movie> filmes) throws IOException {
         MovieRepository repository = new MovieRepository();
         String file = "output_csv\\" + fileName + ".csv";
         repository.write(filmes, Path.of(file));

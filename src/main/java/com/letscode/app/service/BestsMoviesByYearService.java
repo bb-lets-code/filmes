@@ -37,7 +37,7 @@ public class BestsMoviesByYearService {
                 );
 
             try {
-                whiteMovieService.writeFile(year, filmesByYear);
+                whiteMovieService.writeFile(year.toString(), filmesByYear);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
