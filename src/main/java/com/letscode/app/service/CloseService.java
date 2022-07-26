@@ -4,12 +4,13 @@ import java.time.LocalDateTime;
 import com.letscode.app.service.WriteExecutionTimeService;
 
 public class CloseService{
-    public static void closeApp(LocalDateTime begin) throws IOException {
+    public void closeApp(LocalDateTime begin) throws IOException {
 
         LocalDateTime end = LocalDateTime.now();
 
-        String texto = WriteExecutionTimeService.timeToString(begin, end);
-        WriteExecutionTimeService.writeTXT(texto);
+        WriteExecutionTimeService writeExecutionTimeService = new WriteExecutionTimeService();
+        String texto = writeExecutionTimeService.timeToString(begin, end);
+        writeExecutionTimeService.writeTXT(texto);
 
         System.out.println("Programa executado com sucesso!");
         System.out.println(texto);

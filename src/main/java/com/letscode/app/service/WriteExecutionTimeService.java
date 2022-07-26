@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class WriteExecutionTimeService {
-    public static String timeToString(LocalDateTime begin, LocalDateTime end){
+    public String timeToString(LocalDateTime begin, LocalDateTime end){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss.SS");
 
         double executionTime = Duration.between(begin,end).getNano();
@@ -20,7 +20,7 @@ public class WriteExecutionTimeService {
         return texto;
     }
 
-    public static void writeTXT(String texto) throws IOException {
+    public void writeTXT(String texto) throws IOException {
         FileWriter writter = new FileWriter("output_csv\\executionTimeInformation.txt");
         writter.write(texto);
         writter.close();

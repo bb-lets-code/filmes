@@ -15,7 +15,8 @@ public class App {
     // SEPARAR ARQUIVOS ESCRITOS EM NOVA PASTA; REVISAR FUNÇÃO WRITE
     public static void main(String[] args) throws IOException
     {
-        LocalDateTime begin = InitializationService.initializeApp();
+        InitializationService initializationService = new InitializationService();
+        LocalDateTime begin = initializationService.initializeApp();
         MovieRepository repository = new MovieRepository();
         var test = repository.read();
 
@@ -25,6 +26,7 @@ public class App {
         BestsHorrorMoviesService bestsHorrorMoviesService = new BestsHorrorMoviesService(test);
         bestsHorrorMoviesService.execute();
 
-        CloseService.closeApp(begin);
+        CloseService closeService = new CloseService();
+        closeService.closeApp(begin);
     }
 }

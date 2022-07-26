@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class InitializationService{
-    public static LocalDateTime initializeApp(){
+    public LocalDateTime initializeApp(){
         LocalDateTime intializationTime = LocalDateTime.now();
 
         List<File> files = List.of(Objects.requireNonNull(new File("movies_files").listFiles(obj -> obj.isFile()
