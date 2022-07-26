@@ -10,12 +10,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.letscode.app.repository.MovieRepository;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import com.letscode.app.model.Movie;
+import com.letscode.app.repository.MovieRepository;
 import com.letscode.app.service.BestsHorrorMoviesService;
 import com.letscode.app.service.BestsMoviesByYearService;
 

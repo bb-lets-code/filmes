@@ -132,7 +132,7 @@ public class Movie {
         return this.title + ",\"" + Arrays.toString(this.genre) + "\",\"" + this.description + "\",\"" +
                 Arrays.toString(this.directors) + "\",\"" + Arrays.toString(actors) + "\"," + this.year + "," +
                 this.runtime + "," + this.rating.getRating() + "," + this.rating.getVotes() + "," + this.revenue +
-                "," + this.metascore + "\n";
+                "," + this.metascore;
     }
 
     @Override

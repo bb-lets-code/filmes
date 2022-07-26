@@ -1,9 +1,5 @@
 package com.letscode.app.repository;
 
-import com.letscode.app.model.Movie;
-import com.letscode.app.service.ReadMovieService;
-import com.letscode.app.service.WriteMovieService;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -14,6 +10,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.letscode.app.model.Movie;
+import com.letscode.app.service.ReadMovieService;
+import com.letscode.app.service.WriteMovieService;
 
 public class MovieRepository implements BaseRepository<Set<Movie>, Path> {
         @Override
