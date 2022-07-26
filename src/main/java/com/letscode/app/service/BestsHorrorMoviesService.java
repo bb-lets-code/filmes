@@ -21,7 +21,7 @@ public class BestsHorrorMoviesService {
         this.movies = movies;
     }
 
-    public void execute() {
+    public TreeSet<Movie> execute() {
         this.writeMovieService = new WriteMovieService();
         TreeSet<Movie> moviesHorrorGenre = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
         TreeSet<Movie> twentyMovies = new TreeSet<Movie>(Comparator.comparing( Movie::getRating).reversed());
@@ -46,5 +46,7 @@ public class BestsHorrorMoviesService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        return twentyMovies;
     }
 }
