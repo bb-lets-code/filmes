@@ -31,6 +31,7 @@ public class BestsMoviesByYearService {
 
                 filmesByYear.addAll(
                     moviesByYear.stream()
+                    .parallel()
                     .sorted(Comparator.comparing(Movie::getRating).reversed())
                     .limit(50)
                     .collect(Collectors.toList())
