@@ -2,6 +2,8 @@ package com.letscode.app.service;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,9 +23,7 @@ public class WriteExecutionTimeService {
     }
 
     public void writeTXT(String texto) throws IOException {
-        FileWriter writter = new FileWriter("output_csv\\executionTimeInformation.txt");
-        writter.write(texto);
-        writter.close();
+        Files.writeString(Path.of("output_csv\\executionTimeInformation.txt"), texto);
     }
 
 }
