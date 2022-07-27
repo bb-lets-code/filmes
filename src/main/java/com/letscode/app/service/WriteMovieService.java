@@ -12,7 +12,9 @@ import com.letscode.app.repository.MovieRepository;
 public class WriteMovieService {
     public void writeFile(String fileName, Set<Movie> filmes) throws IOException {
         MovieRepository repository = new MovieRepository();
-        String file = "output_csv\\" + fileName + ".csv";
+        String directory = "output_csv";
+        repository.createOutputfolder(directory);
+        String file = directory + "\\" + fileName + ".csv";
         repository.write(filmes, Path.of(file));
     }
 
