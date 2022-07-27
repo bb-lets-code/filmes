@@ -18,12 +18,10 @@ import com.letscode.app.service.WriteMovieService;
 public class MovieRepository implements BaseRepository<Set<Movie>, Path> {
         @Override
     public Set<Movie> read() throws IOException {
-        List<File> files = List.of(Objects.requireNonNull(new File("movies_files").listFiles(obj -> obj.isFile()
-                && obj.getName().endsWith(".csv"))));
-        //new ValidationPath().validate(path);
+        List<Path> paths = Files.list(Path.of("movies_files")).filter(obj -> Files.exists(obj)
+                && obj.getFileName().toString().endsWith(".csv")).collect(Collectors.toList());
 
-        return files.stream()
-                .map(File::toPath)
+        return paths.stream()
                 .map(p -> {
                     try {
                         return Files.lines(p, StandardCharsets.UTF_8);
@@ -34,17 +32,13 @@ public class MovieRepository implements BaseRepository<Set<Movie>, Path> {
                 .flatMap(Stream::distinct)
                 .skip(1)
                 .parallel()
-                .map(ReadMovieService.getTreatmentMovie)
+                .map(new ReadMovieService().getTreatmentMovie)
                 .collect(Collectors.toSet());
         }
 
     @Override
     public void write(Set<Movie> movies, Path path) throws IOException {
-        Files.write(path, WriteMovieService.parseWrite(movies));
-    }
-
-    public void createOutputfolder(String path){
-        new File(path).mkdir();
+        Files.write(path, new WriteMovieService().parseWrite(movies));
     }
 
 }

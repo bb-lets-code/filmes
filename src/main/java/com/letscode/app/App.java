@@ -13,8 +13,7 @@ import com.letscode.app.service.CloseService;
 
 public class App {
 
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) throws IOException {
         InitializationService initializationService = new InitializationService();
         LocalDateTime begin = initializationService.initializeApp();
         MovieRepository repository = new MovieRepository();
