@@ -22,3 +22,6 @@ buildNumber.properties
 .vscode/launch.json
 saida.txt
 /movies_files/FilterByYear
+/movies_files
+/.apt_generated
+/.apt_generated_tests
