@@ -42,4 +42,8 @@ public class MovieRepository implements BaseRepository<Set<Movie>, Path> {
     public void write(Set<Movie> movies, Path path) throws IOException {
         Files.write(path, WriteMovieService.parseWrite(movies));
     }
+
+    public void createOutputfolder(String path){
+            new File(path).mkdir();
+    }
 }
