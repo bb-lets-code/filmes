@@ -11,8 +11,6 @@ import com.letscode.app.service.CloseService;
 
 public class App {
 
-    //TODO: JUNTAR BASE MODEL REPOSITORY; PASSAR A FUNÇÃO PARSEWRITE PARA A CLASSE WRITEMOVIESERVICE; MUDAR NOME TREATMENT SERVICE
-    // SEPARAR ARQUIVOS ESCRITOS EM NOVA PASTA; REVISAR FUNÇÃO WRITE
     public static void main(String[] args) throws IOException
     {
         InitializationService initializationService = new InitializationService();

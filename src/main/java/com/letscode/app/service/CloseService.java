@@ -1,7 +1,6 @@
 package com.letscode.app.service;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import com.letscode.app.service.WriteExecutionTimeService;
 
 public class CloseService{
     public void closeApp(LocalDateTime begin) throws IOException {
