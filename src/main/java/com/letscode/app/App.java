@@ -7,14 +7,13 @@ import com.letscode.app.model.Movie;
 import com.letscode.app.repository.MovieRepository;
 import com.letscode.app.service.BestsHorrorMoviesService;
 import com.letscode.app.service.BestsMoviesByYearService;
+import com.letscode.app.service.ProcessingTimeService;
 
 
 public class App {
 
-    //TODO: JUNTAR BASE MODEL REPOSITORY; PASSAR A FUNÇÃO PARSEWRITE PARA A CLASSE WRITEMOVIESERVICE; MUDAR NOME TREATMENT SERVICE
-    // SEPARAR ARQUIVOS ESCRITOS EM NOVA PASTA; REVISAR FUNÇÃO WRITE
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) throws IOException{
+        ProcessingTimeService.start();
         MovieRepository repository = new MovieRepository();
         Set<Movie> movies = repository.read();
 
@@ -23,5 +22,7 @@ public class App {
 
         BestsHorrorMoviesService bestsHorrorMoviesService = new BestsHorrorMoviesService(movies);
         bestsHorrorMoviesService.execute();
+        ProcessingTimeService.end();
+        System.out.println(ProcessingTimeService.result);
     }
 }
